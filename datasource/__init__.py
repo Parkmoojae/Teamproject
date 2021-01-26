@@ -9,7 +9,7 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqldb://{username}:{password}@{hostname}:{por
     password="sm1418!1662",
     hostname="192.168.0.13",
     port="3306",
-    databasename="jeongain"
+    databasename="adminlte"
 )
 
 #데이터 베이스에 접속한다.
