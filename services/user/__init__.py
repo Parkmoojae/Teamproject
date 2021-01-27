@@ -1,13 +1,16 @@
 from services import app
 from flask import request, jsonify, render_template, session
+from services.user import service as userService
+
 
 @app.route('/login', methods=['POST'])
 def userLogin():
     print("login 도착")
-    # result = {}
-    # data = request.get_json()
-    # print(data)
-    # resultService = userService.userLogin(data)
+    result = {}
+    data = request.form
+    print(data['userId'])
+    print(data['userPw'])
+    resultService = userService.userLogin(data)
     # print(result)
     # print(type(result))
 
