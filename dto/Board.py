@@ -18,8 +18,8 @@ class Board(Base):
     BOARD_TITLE                          = Column(VARCHAR(100), comment='게시글 제목')
     BOARD_PID                            = Column(Integer, comment='게시글 pid')
     
-    def __init__(self, boardId, **kwargs):
-        self.BOARD_ID = boardId
+    def __init__(self, **kwargs):
+        self.BOARD_ID                            = kwargs.get('BOARD_ID', None)
         self.BOARD_CONTENT                       = kwargs.get('BOARD_CONTENT', None)
         self.USER_ID                             = kwargs.get('USER_ID', None)
         self.BOARD_REGDATE                       = kwargs.get('BOARD_REGDATE', None)
