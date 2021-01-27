@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Integer, VARCHAR, NUMERIC, CHAR, DATETIME, TEXT, BOOLEAN, NUMERIC
-from dataSource import Base
+from datasource import Base
 
 __all__ = ['Usergroup']
 
 
 class Usergroup(Base):
-    __tableName__ = "usergroup"
+    __tableName__ = "user_group"
     __table_args__= {
                 'comment' : '회원등급'
     }
