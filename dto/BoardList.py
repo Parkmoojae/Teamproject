@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, VARCHAR, NUMERIC, CHAR, DATETIME, TEXT, BOOLEAN, NUMERIC
-from dataSource import Base
+from datasource import Base
 
 __all__ = ['BoardList']
 
 class BoardList(Base):
-    __tablename__ = "BoardList"
+    __tablename__ = "board_list"
     __table_args__ = {
                         'comment' : '게시판 리스트'
     }

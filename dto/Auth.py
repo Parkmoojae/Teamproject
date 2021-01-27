@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, VARCHAR, NUMERIC, CHAR, DATETIME, TEXT, BOOLEAN, NUMERIC
-from dataSource import Base
+from datasource import Base
 
 __all__ = ['Auth']
 
