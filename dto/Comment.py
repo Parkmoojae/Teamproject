@@ -9,7 +9,7 @@ class Comment(Base):
                         'comment' : '게시판 댓글'
     }
 
-    COMMENT_ID                           = Column(Integer, primary_key=True, comment='댓글 id')
+    COMMENT_ID                           = Column(Integer, primary_key=True, autoincrement=True, comment='댓글 id')
     COMMENT_PID                          = Column(Integer, nullable=False, comment='댓글 pid')
     BOARD_ID                             = Column(Integer, nullable=False, comment='게시글 id')
     COMMENT_CONTENT                      = Column(VARCHAR(100), comment='댓글 내용')
@@ -17,8 +17,8 @@ class Comment(Base):
     USER_ID                              = Column(VARCHAR(100), comment='회원 ID')
     COMMENT_REGDATE                      = Column(DATETIME, comment='댓글 등록일')
     
-    def __init__(self, commentId, **kwargs):
-        self.COMMENT_ID = commentId
+    def __init__(self, **kwargs):
+        self.COMMENT_ID                          = kwargs.get('COMMENT_ID', None)
         self.COMMENT_PID                         = kwargs.get('COMMENT_PID', None)
         self.BOARD_ID                            = kwargs.get('BOARD_ID', None)
         self.COMMENT_CONTENT                     = kwargs.get('COMMENT_CONTENT', None)
