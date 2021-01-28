@@ -863,7 +863,7 @@
                     <div class="col-sm-6"> -->
                       <div class="form-group">
                         <label>제목</label>
-                        <input id=contentId type="text" class="form-control" placeholder="Enter ..." disabled>
+                        <input id=contentTitle type="text" class="form-control" placeholder="Enter ..." disabled>
                       </div>
 
                       
@@ -872,35 +872,51 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="form-group">
-                        <span>
-                          <label>작성자</label>
-                          <input type="text" class="form-control" placeholder="Enter ..." disabled>
-                        </span>
-                        
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>작성일</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." disabled>
+                        <table>
+                          <tr>
+                            <td>
+                              <label>작성자</label>
+                            </td>
+                            <td>
+                              <input id=contentWriter type="text" class="form-control" placeholder="Enter ..." disabled>
+                            </td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <table>
+                          <tr>
+                            <td>
+                              <label>작성일</label>
+                            </td>
+                            <td>
+                              <input id=contentRegDate type="text" class="form-control" placeholder="Enter ..." disabled>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-block btn-default" style="float: right;">삭제하기</button>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  
                   <div class="row">
                     <div class="col-sm-12">
-                      <!-- textarea -->
-                      <!-- <div class="form-group">
-                        <label>Textarea</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                      </div> -->
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>내용</label>
-                        <textarea class="form-control" rows="4" placeholder="Enter ..." disabled></textarea>
+                        <textarea id=content class="form-control" rows="4" placeholder="Enter ..." disabled></textarea>
                       </div>
                     </div>
                   </div>

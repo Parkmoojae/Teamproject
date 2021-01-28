@@ -5,6 +5,7 @@ from dto.model import Board
 from ainUtil import *
 
 
+# 게시글 data 가져오기
 def getBoardContent(data):
     print(data)
     queryResult = session.query(Board).\

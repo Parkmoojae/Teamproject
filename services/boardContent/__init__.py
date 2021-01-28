@@ -2,7 +2,7 @@ from services import app
 from flask import request, jsonify, render_template, session
 from services.boardContent import service as baordContentService
 
-
+# 게시글 data 가져오기
 @app.route('/getBoardContent/<boardId>/<boardListId>/<nowPageNum>')
 def getBoardContent(boardId, boardListId, nowPageNum):
     print("getBoardContent 도착!!")
