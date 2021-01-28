@@ -35,4 +35,5 @@ def userLogin():
     #     result['resultDB'] = '-1'
 
 
-    return render_template('data.html')
+    # return render_template('data.html')
+    return render_template('ainData.html')
