@@ -57,6 +57,7 @@ def render_boardUpdate():
 def board_write():
     requestData = request.get_json()
     print('requestData : ', requestData)
+    requestData['user_id'] = session.get("loginUserData")['user_id']
     return boardService.board_write(requestData)
 
 @app.route('/board/update', methods=["POST"])
