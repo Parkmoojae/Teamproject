@@ -11,7 +11,8 @@ def test_list(data):
                 model.Board.user_id, model.Board.board_title, model.Board.board_content, 
                 model.Board.board_regdate, model.Board.board_del
             )
-    return convertStatementToList(result)
+    # return convertStatementToList(result)
+    return convertDatetimeToString_list(convertStatementToList(result)) 
 
 def board_getContent(data):
     result = {}
@@ -30,6 +31,10 @@ def board_write(data):
         board_del = 0, board_list_id = data.get('board_list_id', None), board_title = data.get('board_title', None),
         board_pid = data.get('board_pid', 0)
     )
+    print('test_datetime')
+    print(board.board_regdate)
+    print( type(board.board_regdate) )
+
     # board = model.Board(**data)
     return sessionAdd(board, session)
 
