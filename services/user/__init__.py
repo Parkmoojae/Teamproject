@@ -41,7 +41,7 @@ def userLogin():
         # 비밀번호 불일치
         result['resultDB'] = '-1'
 
-    return render_template("moojaeData.html")
+    return redirect('/board')
 
 @app.route("/sessionCheck")
 def sessionCheck():
