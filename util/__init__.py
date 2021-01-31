@@ -40,16 +40,13 @@ def returnCodeAfterUpdate(resultCount):
     else:
         result['code']='0'
     return result
-    
-def getCurrentDateTime():
-    currentUtcNaiveTime = datetime.datetime.utcnow()
-    return utc.localize(currentUtcNaiveTime)
 
-def convertUtcTimeToLocalTime(dt, **kwargs):
-    targetTimezone = None
-    if kwargs.get('timezone', None) is None:
-        targetTimezone = timezone('Asia/Seoul')
-    if dt.tzinfo is None:
-        return utc.localize(dt).astimezone(targetTimezone)
-    else:
-        return dt.astimezone(targetTimezone)
+def getCurrentDateTime():
+    return datetime.datetime.now()
+
+def convertDatetimeToString_list(result):
+    for row in result['data']:
+        for key in row.keys():
+            if(type(row[key]) ==  datetime.datetime):
+                row[key] = str(row[key])
+    return result

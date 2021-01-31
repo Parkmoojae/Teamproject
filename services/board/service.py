@@ -11,6 +11,17 @@ def test_list(data):
                 model.Board.user_id, model.Board.board_title, model.Board.board_content, 
                 model.Board.board_regdate, model.Board.board_del
             )
+    # return convertStatementToList(result)
+    return convertDatetimeToString_list(convertStatementToList(result)) 
+
+def board_getContent(data):
+    result = {}
+    result = session.query(model.Board)\
+        .with_entities(
+            model.Board.board_id, model.Board.board_pid, model.Board.board_list_id, 
+            model.Board.user_id, model.Board.board_title, model.Board.board_content, 
+            model.Board.board_regdate, model.Board.board_del
+        ).filter(model.Board.board_id == data['board_id'])
     return convertStatementToList(result)
 
 def board_write(data):
@@ -18,8 +29,12 @@ def board_write(data):
     board = model.Board(
         board_content = data.get('board_content', None), user_id = data.get('user_id', None), board_regdate = getCurrentDateTime(),
         board_del = 0, board_list_id = data.get('board_list_id', None), board_title = data.get('board_title', None),
-        board_pid = data.get('board_pid', None)
+        board_pid = data.get('board_pid', 0)
     )
+    print('test_datetime')
+    print(board.board_regdate)
+    print( type(board.board_regdate) )
+
     # board = model.Board(**data)
     return sessionAdd(board, session)
 
