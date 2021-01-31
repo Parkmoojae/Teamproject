@@ -1,0 +1,21 @@
+#conModiBtn {
+    float: right;
+}
+#conDelBtn {
+    float: right;
+}
+#conWriteBtn{
+    float: right; 
+    margin-top: 7px;
+}
+#commentWriteBtn{
+    height: 62px;
+}
+.mb-3 > .form-control{
+    cursor: pointer;
+}
+#removeClickedId{
+    margin-left: 5px;
+    text-align: center;
+    
+}

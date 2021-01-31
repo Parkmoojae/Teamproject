@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/static/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+  <!-- ain style -->
+  <!-- <link rel="stylesheet" href="/static/css/ainBoardContent.css"> -->
+  <link rel='stylesheet' href="{{ url_for('static', filename='css/ainBoardContent.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -129,7 +132,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <a class="nav-link" data-widget="fullscreen" href="#" role=" ">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
@@ -851,7 +854,6 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form>
                   <div class="row">
                     <div class="col-sm-12">
                       <!-- text input -->
@@ -872,7 +874,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                       <div class="form-group">
                         <table>
                           <tr>
@@ -889,8 +891,9 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                       <div class="form-group">
+                        
                         <table>
                           <tr>
                             <td>
@@ -899,17 +902,21 @@
                             <td>
                               <input id=contentRegDate type="text" class="form-control" placeholder="Enter ..." disabled>
                             </td>
+                            <td>&nbsp;</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-default" style="float: right;">삭제하기</button>
+                              <button id="conModiBtn" type="button" class="btn btn-block btn-default" >수정하기</button>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                              <button id="conDelBtn" type="button" class="btn btn-block btn-default" >삭제하기</button>
                             </td>
                           </tr>
                         </table>
+                        
                       </div>
                     </div>
                   </div>
 
-
-                  
                   <div class="row">
                     <div class="col-sm-12">
                     </div>
@@ -917,13 +924,63 @@
                       <div class="form-group">
                         <label>내용</label>
                         <textarea id=content class="form-control" rows="4" placeholder="Enter ..." disabled></textarea>
+                        
+                        <div class="row">
+                            <div class="col-sm-10">
+                            </div>
+                            <div class='col-sm-2'>
+                              <button id="conWriteBtn" class="btn btn-block btn-default" >답글달기</button>
+                            </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
 
-                </form>
-              </div>
-              <!-- /.card-body -->
+                  
+                  
+                </div>
+                <!-- /.card-body -->
+
+                <div id=cardHeader2 class="card-header">
+                  <span>댓글</span>
+                </div>
+                <div class="card-body">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <!-- <label id="replyTitle">내용</label> -->
+                      <span id="commentPid">
+                        <label>내용</label>
+                      </span>
+                      <div class="row">
+                        <div class="col-sm-10">
+                          <textarea id=commentContent class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                        </div>
+                            <div class="col-sm-2">
+                              <button id="commentWriteBtn" type='button' class="btn btn-block btn-default" >댓글달기</button>
+                            </div>
+                      </div>
+                    </br>
+                      <div id=commentAll>
+
+                        <!-- <div class="row"> -->
+
+                          <!-- <div id=commentDiv class="col-sm-10"> -->
+                            <!-- <div id=commentDiv class="form-group">    
+                            </div> -->
+                          <!-- </div> -->
+
+                          <!-- <div id=commentDiv2 class="col-sm-2"> -->
+                          <!-- </div> -->
+                          
+                        <!-- </div> -->
+                      </div>
+                          
+                    </div>
+                  </div>
+
+
+                </div>
             </div>
 
           </div>
@@ -934,8 +991,16 @@
           </div> -->
           <!--/.col (right) -->
 
+          
         </div>
         <!-- /.row -->
+
+        
+
+
+
+
+
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

@@ -1,8 +1,7 @@
 nowPageNum = 1
 document.getElementById("example2").addEventListener('click', (e)=>{
     if(e.target.matches('td')){
-        alert("!!!!!")
-        boardId = 1
+        boardId = 8
         boardListId = "1"
         // bodyData = {}
         // bodyData['boardListId'] = boardListId
