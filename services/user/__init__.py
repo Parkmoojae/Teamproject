@@ -42,8 +42,8 @@ def userLogin():
         result['resultDB'] = '-1'
 
     # return render_template("moojaeData.html")
-    return render_template("ainData.html")
-    # return redirect('/board')
+    # return render_template("ainData.html")
+    return redirect('/board')
 
 @app.route("/sessionCheck")
 def sessionCheck():

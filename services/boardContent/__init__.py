@@ -17,15 +17,10 @@ def getBoardContent(boardId, boardListId, nowPageNum):
 
     print(data)
     result['resultDB'] = baordContentService.getBoardContent(data)
-    
-    
-    
     result['nowPageNum'] = nowPageNum
 
     # comment 가져오기
     result['commentList'] = baordContentService.getComment(data)
-    print('댓글가져오는거 확인')
-    print(result['commentList']['data'])
     
     # 시간표기 변경 - content
     time = timeFormat(result['resultDB'][0]['board_regdate'])
