@@ -50,7 +50,7 @@ def userInsert(data):
 def userLogin(data):
     queryResult = session.query(model.User).\
         with_entities(
-            model.User.user_id, model.User.user_pw
+            model.User.user_id, model.User.user_pw, model.User.user_group_id
         ).\
                     filter(model.User.user_id==data['userId'])
     
