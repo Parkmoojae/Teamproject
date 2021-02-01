@@ -4,7 +4,13 @@ let board_list_id = get_query()['board_list_id'];
 if(board_list_id==undefined){
     board_list_id=1;
 }
-
+if(board_list_id==1){
+    document.getElementById('freeBoard').classList.toggle("active");
+}else if(board_list_id==2){
+    document.getElementById('hobbyBoard').classList.toggle("active");
+}else if(board_list_id==3){
+    document.getElementById('adminBoard').classList.toggle("active");
+}
 
 document.getElementById('freeBoard').addEventListener('click', (e)=>{
     board_list_id = 1;
