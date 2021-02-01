@@ -25,9 +25,9 @@ document.getElementById('adminBoard').addEventListener('click', (e)=>{
 
 document.getElementById('example1').addEventListener('click',(e)=>{
     if(e.target.matches('td')){
-        let board_id = document.getElementById('boardId').innerText;
+        let board_id = e.target.parentNode.firstChild.innerText;
         let nowPageNum = document.querySelector('#example1_paginate > ul > li.paginate_button.page-item.active > a').innerText;
-         
+        
         location.href="/getBoardContent/"+board_id+'/'+board_list_id+'/'+nowPageNum;
         
     }
