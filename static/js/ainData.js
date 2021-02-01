@@ -40,22 +40,6 @@ function sendData(bodyData){
         console.log(res)
         console.log(res['resultDB'][0])
         location.href = "/render/boardContent/" + res['resultDB'][0] + '/' + res['nowPageNum']
-    //     // if(res["resultDB"]=='0'){
-    //     //     console.log("로그인 실패: 아이디 불일치")
-    //     //     alert("아이디가 불일치 합니다.")
-
-    //     // }else if(res["resultDB"]=='1'){
-    //     //     console.log("로그인 성공")
-    //     //     // location.href = '/board/boardcommon'
-    //     //     // location.href = '/render/main'
-    //     //     data1 = "boadId"
-    //     //     pageNum = 1
-    //     //     location.href = '/board/post/'+ data1 + "/" + pageNum
-
-    //     // }else if(res["resultDB"]=='-1'){
-    //     //     console.log("로그인 실패: 비밀번호 불일치")
-    //     //     alert("비밀번호가 다릅니다.")
-    //     // }
 
     })
 }
