@@ -1,6 +1,7 @@
 from datasource import *
 from sqlalchemy import text, exc, and_, or_, func, String, DateTime
 import uuid, datetime
+from ainUtil import *
 from dto import *
 
     # from dto.User import *
@@ -57,13 +58,3 @@ def userLogin(data):
     print(result)
 
     return result
-
-def queryToDict(queryResult):
-    result = []
-    rows = queryResult.all()
-
-    for row in rows:
-        result.append(row._asdict())
-    
-    return result
-
