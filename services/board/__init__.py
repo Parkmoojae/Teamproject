@@ -1,6 +1,7 @@
 from services import app
 from flask import request, jsonify, render_template, session, redirect
 from services.board import service as boardService
+from util.decorator3 import kys_authDecorator
 
 @app.route('/test/api')
 def test_api():
@@ -13,6 +14,12 @@ def test_kys():
 
 @app.route('/test/list', methods=['POST'])
 def test_list():
+    data={}
+    return boardService.test_list(data)
+
+@app.route('/test/auth', methods=['POST'])
+@kys_authDecorator
+def test_auth():
     data={}
     return boardService.test_list(data)
 
