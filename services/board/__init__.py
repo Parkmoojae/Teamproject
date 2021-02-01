@@ -59,13 +59,18 @@ def board_write():
     requestData = request.get_json()
     print('requestData : ', requestData)
     requestData['user_id'] = session.get("loginUserData")['user_id']
-    return boardService.board_write(requestData)
+    result = boardService.board_write(requestData)
+    return result
 
 @app.route('/board/update', methods=["POST"])
 def board_update():
     requestData = request.get_json()
     print('requestData : ', requestData)
-    return boardService.board_update(requestData)
+    result = boardService.board_update(requestData)
+    result['board_id']      = requestData.get('board_id', None)
+    result['boardListId']   = requestData.get('boardListId', None)
+    result['nowPageNum']   = requestData.get('nowPageNum', None)
+    return result
 
 @app.route('/board/delete', methods=["POST"])
 def board_delete():
