@@ -2,6 +2,7 @@ from services import app
 from flask import request, jsonify, render_template, session, redirect
 from services.board import service as boardService
 from util.decorator3 import kys_authDecorator
+# from util.decorator import kys_authDecorator
 
 @app.route('/test/api')
 def test_api():
@@ -27,11 +28,16 @@ def test_auth():
 def render_invalidRequest():
     return render_template('invalidRequest.html')
 
+@app.route('/render/insufficientAuthority')
+def render_insufficientAuthorityRequest():
+    return render_template('insufficientAuthority.html')
+
 @app.route('/render/tempPage')
 def render_tempPage():
     return render_template('tempPage.html')
 
 @app.route('/render/board/write')
+@kys_authDecorator
 def render_boardWrite():
     requiredArgList = ['board_list_id']
     requestArgList = request.args.to_dict()
@@ -43,6 +49,7 @@ def render_boardWrite():
     return render_template('boardWrite.html', data=requestArgList)
 
 @app.route('/render/board/update')
+@kys_authDecorator
 def render_boardUpdate():
     requiredArgList = ['board_list_id', 'board_id']
     requestArgList = request.args.to_dict()

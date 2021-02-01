@@ -15,6 +15,8 @@ def test_list(data):
     return convertDatetimeToString_list(convertStatementToList(result)) 
 
 def board_getContent(data):
+    print('board_getContent ...')
+    print(data)
     result = {}
     result = session.query(model.Board)\
         .with_entities(
