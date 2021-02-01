@@ -2,3 +2,6 @@
     table-layout: fixed;
     word-break: break-all;
 }
+#writeBoard{
+    margin-bottom: 10px;
+}
