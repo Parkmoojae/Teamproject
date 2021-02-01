@@ -1,3 +1,6 @@
+let cancelPage = '/render/tempPage';
+let successPage = '/getBoardContent';
+
 // 이벤트 리스너
 document.querySelector('body').addEventListener('click', function(e){
     eventTarget = e.target;
@@ -7,7 +10,8 @@ document.querySelector('body').addEventListener('click', function(e){
         process_boardWrite();
     }else if(eventTarget.matches('#btn_cancel')){
         // console.log('취소버튼 클릭');
-        location.href='/render/tempPage'
+        // location.href='/render/tempPage'
+        location.href=cancelPage;
     }
 });
 
@@ -38,7 +42,9 @@ async function process_boardWrite(){
     });
     console.log('fetchData : ', fetchData);
     if(fetchData['code'] == '1'){
-        location.href = '/render/tempPage';
+        // location.href = '/render/tempPage';
+        // location.href = successPage + '/' + fetchData['board_id'] + '/' + fetchData['board_list_id'] + '/' + fetchData['nowPageNum']; 
+        location.href = successPage + '/' + fetchData['board_id'] + '/' + fetchData['board_list_id'] + '/1'; 
     }
 }
 
