@@ -37,6 +37,7 @@ document.getElementById('conModiBtn').addEventListener('click', (e)=>{
     data['regDate'] = contentRegDate.value
     data['content'] = content.value
     console.log(data)
+    location.href="/render/board/update?board_list_id=" + data['boardListId'] + "&board_id=" + data['boardId']
     
 })
 
@@ -44,13 +45,12 @@ document.getElementById('conModiBtn').addEventListener('click', (e)=>{
 document.getElementById('conDelBtn').addEventListener('click', (e)=>{
     let data={}
     data['nowPageNum'] = contentData['nowPageNum']
-    data['boardListId'] = contentData['resultDB'][0]['board_list_id']
-    data['boardId'] = contentData['resultDB'][0]['board_id']
-    data['title'] = contentTitle.value
+    data['board_list_id'] = contentData['resultDB'][0]['board_list_id']
+    data['board_id'] = contentData['resultDB'][0]['board_id']
     data['writer'] = contentData['resultDB'][0]['user_id']
-    data['regDate'] = contentRegDate.value
-    data['content'] = content.value
     console.log(data)
+    delContent(data)
+    
 })
 
 // 답글버튼 이벤트
@@ -64,24 +64,31 @@ document.getElementById('conWriteBtn').addEventListener('click', (e)=>{
     data['regDate'] = contentRegDate.value
     data['content'] = content.value
     console.log(data)
+    location.href='/render/board/write?board_list_id=' + data['board_list_id'] + '&board_pid=' + data['boardId']
 })
 
 // 댓글작성 버튼 이벤트
 document.getElementById('commentWriteBtn').addEventListener('click', (e)=>{
-    let data={}
-    data['nowPageNum'] = contentData['nowPageNum']
-    data['boardListId'] = contentData['resultDB'][0]['board_list_id']
-    data['boardId'] = contentData['resultDB'][0]['board_id']
-    data['commentContent'] = commentContent.value
-    // data['commentPid'] = null
-    data['commentPid'] = clickedComPId
-    console.log(data)
-
-    insertCommnet(data)
-
-    // 초기화
-    commentInit()
-    // commentContent.value = ""
+    // 댓글 입력여부 확인
+    if(commentContent.value==''){
+        alert('댓글을 입력해주세요')
+    }
+    else{
+        let data={}
+        data['commentContent'] = commentContent.value
+        data['nowPageNum'] = contentData['nowPageNum']
+        data['boardListId'] = contentData['resultDB'][0]['board_list_id']
+        data['boardId'] = contentData['resultDB'][0]['board_id']
+        // data['commentPid'] = null
+        data['commentPid'] = clickedComPId
+        console.log(data)
+        
+        insertCommnet(data)
+        
+        // 초기화
+        commentInit()
+        // commentContent.value = ""
+    }
 })
 
 // 댓글 선택한 id 기억
@@ -226,6 +233,31 @@ function setComment(data){
     // commentDiv2.innerHTML = btnList
     
 }
+
+// 게시글 삭제
+function delContent(bodyData){
+    let rootUrl = 'http://127.0.0.1:5000';
+    let routing = '/board/delete';
+    fetch(rootUrl + routing, {
+        method : 'POST',
+        headers : {
+            'Content-type' : 'application/json;charset=utf-8'
+        },
+        body : JSON.stringify(bodyData)
+    })
+    .then(response => {
+        console.log(response); 
+        return response.json();
+    })
+    .then(res=>{
+        if(res['code']==1){
+            alert("삭제완료")
+            location.href='/board?board_list_id=' + bodyData['board_list_id'] +'&nowPageNum=' + bodyData['nowPageNum']
+        }
+    })
+
+}
+
 
 // 댓글 DB 입력
 function insertCommnet(bodyData){

@@ -23,8 +23,10 @@ def getBoardContent(boardId, boardListId, nowPageNum):
     result['commentList'] = baordContentService.getComment(data)
     
     # 시간표기 변경 - content
-    time = timeFormat(result['resultDB'][0]['board_regdate'])
-    result['resultDB'][0]['board_regdate'] = time
+    if result['resultDB'][0]['board_regdate']:
+        time = timeFormat(result['resultDB'][0]['board_regdate'])
+        result['resultDB'][0]['board_regdate'] = time
+    
 
     # 시간표기 변경 - comment
     temp = commentTimeFormat(result['commentList']['data'])
