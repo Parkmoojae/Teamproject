@@ -278,6 +278,10 @@ function insertCommnet(bodyData){
         return temp.json();
     })
     .then(function(res){
+        // 데코레이터 권한 체크
+        if(res['code']==22){
+            alert('권한이 없습니다.')
+        }
         if(res['resultDB']['code']==1){
             console.log(res)
             setComment(res)
@@ -307,6 +311,9 @@ function delComment(bodyData){
         return temp.json();
     })
     .then(function(res){
+        if(res['code']==22){
+            alert("권한이 없습니다.")
+        }
         if(res['resultDB']['code']==1){
             console.log(res)
             setComment(res)
