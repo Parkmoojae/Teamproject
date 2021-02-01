@@ -68,7 +68,7 @@ def board_update():
     print('requestData : ', requestData)
     result = boardService.board_update(requestData)
     result['board_id']      = requestData.get('board_id', None)
-    result['boardListId']   = requestData.get('boardListId', None)
+    result['board_list_id']   = requestData.get('board_list_id', None)
     result['nowPageNum']   = requestData.get('nowPageNum', None)
     return result
 
