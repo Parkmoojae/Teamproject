@@ -1,6 +1,9 @@
 
 createBoard(resultList['boardList']);
 let board_list_id = get_query()['board_list_id'];
+if(board_list_id==undefined){
+    board_list_id=1;
+}
 
 document.getElementById('freeBoard').addEventListener('click', (e)=>{
     board_list_id = 1;
@@ -22,14 +25,16 @@ document.getElementById('adminBoard').addEventListener('click', (e)=>{
 
 document.getElementById('example1').addEventListener('click',(e)=>{
     if(e.target.matches('td')){
-        if(board_list_id==undefined)
-            board_list_id = 1;
-        let board_id = document.getElementById('boardId').innerText;
+        let board_id = e.target.parentNode.firstChild.innerText;
         let nowPageNum = document.querySelector('#example1_paginate > ul > li.paginate_button.page-item.active > a').innerText;
-         
+        
         location.href="/getBoardContent/"+board_id+'/'+board_list_id+'/'+nowPageNum;
         
     }
+});
+
+document.getElementById('writeBoard').addEventListener('click',(e)=>{
+    location.href="/render/board/write?board_list_id="+board_list_id;
 });
 /*     
 function fetchBoard(b_list_id){
@@ -91,6 +96,7 @@ function createBoard(boardList){
     tr.appendChild(bDate);
 
     tbody.appendChild(tr);
+
 
     }
     
