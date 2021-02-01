@@ -4,3 +4,4 @@ from services.user import *
 from services.boardContent import *
 from services.board import *
 from services.dataBoard import *
+from services.auth import *

@@ -18,5 +18,5 @@ def authority_groupAuthority_getList(data):
                 model.Auth.auth_board_read,
                 model.Auth.auth_comment_write,
                 model.Auth.auth_comment_del
-            ).filter(model.User.user_id == data['member_id'])
+            ).filter(model.User.user_id == data['user_id'])
     return convertStatementToList(result)

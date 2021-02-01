@@ -65,7 +65,7 @@ class User(Base):
 
     user_id = Column(String(100), primary_key=True, comment='회원 아이디')
     user_pw = Column(String(100), comment='회원 비밀번호')
-    user_group_id = Column(String(100), comment='회원 그룹아이디')
+    user_group_id = Column(String(100), server_default=text("'01'"))
 
 
 class UserGroup(Base):
