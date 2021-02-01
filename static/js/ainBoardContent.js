@@ -250,6 +250,9 @@ function delContent(bodyData){
         return response.json();
     })
     .then(res=>{
+        if(res['code']==22){
+            alert("권한없음")
+        }
         if(res['code']==1){
             alert("삭제완료")
             location.href='/board?board_list_id=' + bodyData['board_list_id'] +'&nowPageNum=' + bodyData['nowPageNum']
@@ -278,6 +281,10 @@ function insertCommnet(bodyData){
         return temp.json();
     })
     .then(function(res){
+        // 데코레이터 권한 체크
+        if(res['code']==22){
+            alert('권한이 없습니다.')
+        }
         if(res['resultDB']['code']==1){
             console.log(res)
             setComment(res)
@@ -307,6 +314,9 @@ function delComment(bodyData){
         return temp.json();
     })
     .then(function(res){
+        if(res['code']==22){
+            alert("권한이 없습니다.")
+        }
         if(res['resultDB']['code']==1){
             console.log(res)
             setComment(res)

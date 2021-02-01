@@ -78,6 +78,7 @@ def insertComment():
 
 # 댓글 삭제
 @app.route('/delComment', methods=['POST'])
+@jai_authDecorator
 def delComment():
     print("delComment 도착")
     result = {}
@@ -86,10 +87,11 @@ def delComment():
     loginUser = session.get("loginUserData")
     print(loginUser)
     # 댓글 작성자 id와 로그인 유저 비교
-    if data['userId'] == loginUser['user_id']:
-        result['resultDB'] = baordContentService.delComment(data)
-    else:
-        result['resultDB'] = -1
+    result['resultDB'] = baordContentService.delComment(data)
+    # if data['userId'] == loginUser['user_id']:
+    #     result['resultDB'] = baordContentService.delComment(data)
+    # else:
+    #     result['resultDB'] = -1
 
      # comment 가져오기
     result['commentList'] = baordContentService.getComment(data)
