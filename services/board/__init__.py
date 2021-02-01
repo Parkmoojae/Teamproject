@@ -4,7 +4,7 @@ from services.board import service as boardService
 
 @app.route('/test/api')
 def test_api():
-    return render_template('test_api.html')
+    return render_template('/test/test_api.html')
     # return render_template('.../test/test_api.html')
 
 @app.route('/test/kys')
