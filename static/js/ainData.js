@@ -1,8 +1,8 @@
 nowPageNum = 1
+// 게시글 클릭시 content로 이동
 document.getElementById("example2").addEventListener('click', (e)=>{
     if(e.target.matches('td')){
-        alert("!!!!!")
-        boardId = 1
+        boardId = 8
         boardListId = "1"
         // bodyData = {}
         // bodyData['boardListId'] = boardListId

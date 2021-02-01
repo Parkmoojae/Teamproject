@@ -56,6 +56,7 @@ class Comment(Base):
     comment_del = Column(TINYINT(4), comment='댓글 삭제여부 / 일반:0 삭제:1')
     user_id = Column(String(100), comment='회원 id')
     comment_regdate = Column(DateTime, comment='댓글 등록일')
+    board_list_id = Column(String(100), comment='게시판 id')
 
 
 class User(Base):
