@@ -104,3 +104,4 @@ def delComment(data):
 
     resultVal = returnCodeAfterUpdate(result)
     return resultVal
+

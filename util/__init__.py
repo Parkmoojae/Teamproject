@@ -3,6 +3,7 @@ from sqlalchemy import exc
 import datetime
 from pytz import timezone, utc
 
+
 def convertStatementToList(statement):
     result = {}
     dataList = []
