@@ -4,7 +4,10 @@ let board_list_id = get_query()['board_list_id'];
 if(board_list_id==undefined){
     board_list_id=1;
 }
-
+if(resultList['nowPageNum']!=null){
+    pageNum = resultList['nowPageNum'];
+    alert(pageNum);
+}
 document.getElementById('freeBoard').addEventListener('click', (e)=>{
     board_list_id = 1;
     location.href="/board?board_list_id="+board_list_id;
@@ -36,30 +39,7 @@ document.getElementById('example1').addEventListener('click',(e)=>{
 document.getElementById('writeBoard').addEventListener('click',(e)=>{
     location.href="/render/board/write?board_list_id="+board_list_id;
 });
-/*     
-function fetchBoard(b_list_id){
-    fetch("/board", {
-        method: "POST",
-        headers:{
-            "Content-Type" : "application/json",
-        },
-        body : JSON.stringify({
-            board_list_id : b_list_id
-        })
-    }).then((res) => {
 
-    });
-} */
-
-//테이블초기화
-
-/* function tableClean(){
-    
-   let example1tbody = document.getElementById('example1tbody');
-   while(example1tbody.hasChildNodes){
-    example1tbody.removeChild(example1tbody.firstChild);
-   }
-} */
 
 
 function createBoard(boardList){
