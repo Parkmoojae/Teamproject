@@ -18,9 +18,11 @@ def authority_groupAuthority_getList(data):
                 model.Auth.auth_board_read,
                 model.Auth.auth_comment_write,
                 model.Auth.auth_comment_del
-            ).filter(model.User.user_id == data['user_id']).all()
+            ).filter(model.User.user_id == data['user_id'])
     
     for row in rows:
-        result[row.]
+        tempDict = row._asdict()
+        result[tempDict['board_list_id']]=tempDict
+    return result
 
     
