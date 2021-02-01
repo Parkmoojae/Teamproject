@@ -5,6 +5,7 @@ from services.board import service as boardService
 @app.route('/test/api')
 def test_api():
     return render_template('test_api.html')
+    # return render_template('.../test/test_api.html')
 
 @app.route('/test/kys')
 def test_kys():
@@ -70,4 +71,7 @@ def board_update():
 def board_delete():
     requestData = request.get_json()
     print('requestData : ', requestData)
-    return boardService.board_delete(requestData)
+    result = boardService.board_delete(requestData)
+    result['nowPageNum']    = requestData.get('nowPageNum', None)
+    result['boardListId']   = requestData.get('boardListId', None)
+    return result
