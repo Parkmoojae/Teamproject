@@ -64,7 +64,7 @@ document.getElementById('conWriteBtn').addEventListener('click', (e)=>{
     data['regDate'] = contentRegDate.value
     data['content'] = content.value
     console.log(data)
-    location.href='/render/board/write?board_list_id=' + data['board_list_id'] + '&board_pid=' + data['boardId']
+    location.href='/render/board/write?board_list_id=' + data['boardListId'] + '&board_pid=' + data['boardId']
 })
 
 // 댓글작성 버튼 이벤트
