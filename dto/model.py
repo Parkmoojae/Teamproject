@@ -14,7 +14,7 @@ class Auth(Base):
 
     auth_id = Column(String(100), primary_key=True, comment='게시판 권한 id')
     user_group_id = Column(String(100), comment='회원그룹 id')
-    board_id = Column(INTEGER(11), comment='게시판 id')
+    board_list_id = Column(String(100), comment='게시판 id')
     auth_board_write = Column(TINYINT(4), comment='작성 권한 / 가능:1 없음:0')
     auth_board_del = Column(TINYINT(4), comment='삭제 권한 / 가능:1 없음:0')
     auth_board_modi = Column(TINYINT(4), comment='수정 권한 / 가능:1 없음:0')
