@@ -2,7 +2,7 @@ from services import app
 from flask import request, jsonify, render_template, session
 from services.boardContent import service as baordContentService
 import datetime
-# from util import *
+from util.decorator2 import jai_authDecorator
 from ainUtil import *
 
 # 게시글 data 가져오기
@@ -48,6 +48,7 @@ def test():
 
 # 댓글 입력
 @app.route('/insertComment', methods=['POST'])
+@jai_authDecorator
 def insertComment():
     print("insertComment 도착!")
     result={}
