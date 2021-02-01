@@ -34,7 +34,6 @@ def jai_authDecorator(f):
                     return result
                 
             
-
         return f(*args, **kwargs)
 
     return decorated_function

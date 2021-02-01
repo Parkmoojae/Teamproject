@@ -250,6 +250,9 @@ function delContent(bodyData){
         return response.json();
     })
     .then(res=>{
+        if(res['code']==22){
+            alert("권한없음")
+        }
         if(res['code']==1){
             alert("삭제완료")
             location.href='/board?board_list_id=' + bodyData['board_list_id'] +'&nowPageNum=' + bodyData['nowPageNum']
