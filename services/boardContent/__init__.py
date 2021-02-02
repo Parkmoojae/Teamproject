@@ -2,13 +2,14 @@ from services import app
 from flask import request, jsonify, render_template, session
 from services.boardContent import service as baordContentService
 import datetime
+from util.decorator3 import authDecorator
 from util.decorator2 import jai_authDecorator
 from ainUtil import *
-# from util.decorator3 import authDecorator
 # from util.decorator3 import authDecorator, kys_authDecorator
 
 # 게시글 data 가져오기
 @app.route('/getBoardContent/<boardId>/<boardListId>/<nowPageNum>')
+@authDecorator
 @jai_authDecorator
 def getBoardContent(boardId, boardListId, nowPageNum):
     print("getBoardContent 도착!!")
@@ -43,7 +44,7 @@ def getBoardContent(boardId, boardListId, nowPageNum):
     print(result['resultDB'])
     print(result['nowPageNum'])
 
-    return render_template('ainBoardContent copy.html', data=result)
+    return render_template('ainBoardContent.html', data=result)
     # return render_template('dd.html', data=result)
 
 @app.route('/ainBoardContent')

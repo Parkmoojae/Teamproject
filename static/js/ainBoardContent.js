@@ -160,6 +160,8 @@ function setContent(data){
         boardName = '취미'
     }
     
+    document.getElementById('boardName').innerText = boardName
+
     spanTag.innerHTML = boardName + "게시판"
     cardHeader.appendChild(spanTag)
     
