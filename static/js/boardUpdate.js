@@ -1,4 +1,4 @@
-let cancelPage = '/render/tempPage';
+let cancelPage = '/board';
 let successPage = '/getBoardContent';
 
 // 이벤트 리스너
@@ -45,6 +45,8 @@ async function process_boardWrite(){
         // location.href = '/render/tempPage';
         // location.href = successPage + '/' + fetchData['board_id'] + '/' + fetchData['board_list_id'] + '/' + fetchData['nowPageNum']; 
         location.href = successPage + '/' + fetchData['board_id'] + '/' + fetchData['board_list_id'] + '/1'; 
+    }else if(fetchData['code'] == 22){
+        location.href = '/render/insufficientAuthority';
     }
 }
 

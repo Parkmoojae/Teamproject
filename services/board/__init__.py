@@ -69,6 +69,7 @@ def render_boardUpdate():
     return render_template('boardUpdate.html', data=requestArgList)
 
 @app.route('/board/write', methods=['POST'])
+@kys_authDecorator
 def board_write():
     requestData = request.get_json()
     print('requestData : ', requestData)
@@ -77,6 +78,7 @@ def board_write():
     return result
 
 @app.route('/board/update', methods=["POST"])
+@kys_authDecorator
 def board_update():
     requestData = request.get_json()
     print('requestData : ', requestData)
@@ -87,6 +89,7 @@ def board_update():
     return result
 
 @app.route('/board/delete', methods=["POST"])
+@kys_authDecorator
 def board_delete():
     requestData = request.get_json()
     print('requestData : ', requestData)

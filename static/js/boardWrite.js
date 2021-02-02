@@ -1,4 +1,4 @@
-let cancelPage = '/render/tempPage';
+let cancelPage = '/board';
 let successPage = '/board';
 
 
@@ -44,7 +44,10 @@ async function process_boardWrite(){
     if(fetchData['code'] == '1'){
         // location.href = '/render/tempPage';
         location.href = successPage;
+    }else if(fetchData['code'] == 22){
+        location.href = '/render/insufficientAuthority';
     }
+
 }
 
 async function myFetch(fetchUrl, requestObject){
