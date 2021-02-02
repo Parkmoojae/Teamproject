@@ -1,16 +1,19 @@
 if(resultList != ''){
     createBoard(resultList['boardList']);
 }
-let board_list_id = get_query()['board_list_id'];
+board_list_id = get_query()['board_list_id'];
 if(board_list_id==undefined){
     board_list_id=1;
 }
 if(board_list_id==1){
-    document.getElementById('freeBoard').classList.toggle("active");
+    document.getElementById('boardName').innerText="자유";
+    document.getElementById('h3_title').innerText="자유게시판";
 }else if(board_list_id==2){
-    document.getElementById('hobbyBoard').classList.toggle("active");
+    document.getElementById('boardName').innerText="취미";
+    document.getElementById('h3_title').innerText="취미게시판";
 }else if(board_list_id==3){
-    document.getElementById('adminBoard').classList.toggle("active");
+    document.getElementById('boardName').innerText="관리자";
+    document.getElementById('h3_title').innerText="관리자게시판";
 }
 
 document.getElementById('freeBoard').addEventListener('click', (e)=>{

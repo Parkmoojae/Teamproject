@@ -14,6 +14,7 @@
   <!-- ain style -->
   <!-- <link rel="stylesheet" href="/static/css/ainBoardContent.css"> -->
   <link rel='stylesheet' href="{{ url_for('static', filename='css/ainBoardContent.css')}}">
+  <script>let contentData = {{data|tojson}}</script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -203,7 +204,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
+              <li id="boardName2" class="breadcrumb-item active"></li>
+              <li class="breadcrumb-item active">게시글</li>
             </ol>
           </div>
         </div>
@@ -408,9 +410,8 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
-<script>let contentData = {{data|tojson}}</script>
+
 <script>let resultList = ''</script>
 <script src="/static/js/ainBoardContent.js"></script>
-<script src="/static/js/dataPage.js"></script>
 </body>
 </html>

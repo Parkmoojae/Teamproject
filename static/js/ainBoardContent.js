@@ -151,7 +151,15 @@ document.getElementById('commentAll').addEventListener('click', (e)=>{
 function setContent(data){
     console.log(data)
     // 게시글-게시판 종류 넣기
-    spanTag.innerHTML = data['resultDB'][0]['board_list_id']+"번 게시판"
+    let boardName = ''
+    if(data['resultDB'][0]['board_list_id']==1){
+        boardName = '자유'
+    }
+    if(data['resultDB'][0]['board_list_id']==2){
+        boardName = '취미'
+    }
+    document.getElementById('boardName2').innerText = boardName
+    spanTag.innerHTML = boardName + "게시판"
     cardHeader.appendChild(spanTag)
     
     // 게시글-제목 넣기
