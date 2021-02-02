@@ -2,8 +2,10 @@ from services import app
 from flask import request, jsonify, render_template, session
 from services.dataBoard import service as BService
 from util import *
+from util.decorator3 import authDecorator
 
 @app.route('/board', methods=["GET", "POST"])
+@authDecorator
 def boardPage():
     data = request.args.get('board_list_id')
     print("!!!!!!!!!!!!!!!!!!!!")
