@@ -2,8 +2,9 @@ from services import app
 from flask import request, jsonify, render_template, session
 from services.boardContent import service as baordContentService
 import datetime
-from util.decorator3 import authDecorator
+# from util.decorator import authDecorator
 from util.decorator2 import jai_authDecorator
+from util.decorator3 import authDecorator
 from ainUtil import *
 # from util.decorator3 import authDecorator, kys_authDecorator
 
