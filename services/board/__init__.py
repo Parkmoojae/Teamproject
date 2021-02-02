@@ -1,8 +1,9 @@
 from services import app
 from flask import request, jsonify, render_template, session, redirect
 from services.board import service as boardService
-from util.decorator3 import kys_authDecorator, authDecorator
-# from util.decorator import kys_authDecorator, authDecorator
+# from util.decorator3 import kys_authDecorator, authDecorator
+from util.decorator3 import kys_authDecorator
+from util.decorator import authDecorator
 
 @app.route('/test/api')
 def test_api():
