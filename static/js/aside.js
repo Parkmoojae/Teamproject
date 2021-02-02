@@ -1,7 +1,9 @@
 
 let board_list_id = get_query()['board_list_id'];
+
 if(board_list_id==undefined){
     board_list_id = get_boardListId();
+
 }
 if(board_list_id==1){
     document.getElementById('freeBoard').classList.toggle("active");
@@ -33,6 +35,9 @@ function get_boardListId(){
     let uri = document.location.href;
     let boardListId = uri.split('/')[5];
     
+    if(boardListId==undefined){
+        boardListId = 1;
+    }
     return boardListId
 }
 function get_query(){
