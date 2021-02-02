@@ -4,6 +4,8 @@ from services.boardContent import service as baordContentService
 import datetime
 from util.decorator2 import jai_authDecorator
 from ainUtil import *
+# from util.decorator3 import authDecorator
+# from util.decorator3 import authDecorator, kys_authDecorator
 
 # 게시글 data 가져오기
 @app.route('/getBoardContent/<boardId>/<boardListId>/<nowPageNum>')

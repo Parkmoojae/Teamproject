@@ -26,6 +26,7 @@ setContent(contentData)
 // 댓글 값 넣기
 setComment(contentData)
 
+
 // 수정버튼 이벤트
 document.getElementById('conModiBtn').addEventListener('click', (e)=>{
     let data={}
@@ -158,7 +159,7 @@ function setContent(data){
     if(data['resultDB'][0]['board_list_id']=="2"){
         boardName = '취미'
     }
-
+    
     spanTag.innerHTML = boardName + "게시판"
     cardHeader.appendChild(spanTag)
     
