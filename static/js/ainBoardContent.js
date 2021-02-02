@@ -152,13 +152,13 @@ function setContent(data){
     console.log(data)
     // 게시글-게시판 종류 넣기
     let boardName = ''
-    if(data['resultDB'][0]['board_list_id']==1){
+    if(data['resultDB'][0]['board_list_id']=="1"){
         boardName = '자유'
     }
-    if(data['resultDB'][0]['board_list_id']==2){
+    if(data['resultDB'][0]['board_list_id']=="2"){
         boardName = '취미'
     }
-    document.getElementById('boardName2').innerText = boardName
+
     spanTag.innerHTML = boardName + "게시판"
     cardHeader.appendChild(spanTag)
     
@@ -241,6 +241,8 @@ function setComment(data){
     // commentDiv2.innerHTML = btnList
     
 }
+
+
 
 // 게시글 삭제
 function delContent(bodyData){
