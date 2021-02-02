@@ -1,8 +1,8 @@
 from services import app
 from flask import request, jsonify, render_template, session, redirect
 from services.board import service as boardService
-from util.decorator3 import kys_authDecorator
-# from util.decorator import kys_authDecorator
+from util.decorator3 import kys_authDecorator, authDecorator
+# from util.decorator import kys_authDecorator, authDecorator
 
 @app.route('/test/api')
 def test_api():
@@ -37,6 +37,7 @@ def render_tempPage():
     return render_template('tempPage.html')
 
 @app.route('/render/board/write')
+@authDecorator
 @kys_authDecorator
 def render_boardWrite():
     requiredArgList = ['board_list_id']
@@ -49,6 +50,7 @@ def render_boardWrite():
     return render_template('boardWrite.html', data=requestArgList)
 
 @app.route('/render/board/update')
+@authDecorator
 @kys_authDecorator
 def render_boardUpdate():
     requiredArgList = ['board_list_id', 'board_id']
@@ -69,6 +71,7 @@ def render_boardUpdate():
     return render_template('boardUpdate.html', data=requestArgList)
 
 @app.route('/board/write', methods=['POST'])
+@authDecorator
 @kys_authDecorator
 def board_write():
     requestData = request.get_json()
@@ -78,6 +81,7 @@ def board_write():
     return result
 
 @app.route('/board/update', methods=["POST"])
+@authDecorator
 @kys_authDecorator
 def board_update():
     requestData = request.get_json()
@@ -89,6 +93,7 @@ def board_update():
     return result
 
 @app.route('/board/delete', methods=["POST"])
+@authDecorator
 @kys_authDecorator
 def board_delete():
     requestData = request.get_json()
