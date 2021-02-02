@@ -58,19 +58,34 @@ def kys_authDecorator(func):
                         print('boardContent : ', boardContent)
                         contentOwner = boardContent['data'][0]['user_id']
                         print('contentOwner : ', contentOwner)
-                        if( (currentUserAuthority[requestArgList['board_list_id']]['auth_board_modi'] != 1) and (currentUserData['user_id'] !=  contentOwner)  ):
+                        if( (currentUserAuthority[requestArgList['board_list_id']]['auth_board_modi'] != 1) and (currentUserData['user_id'] !=  contentOwner) ):
                             print('redirect ...')
                             insufficientAuthorityFlag = 1                                
             # data 처리
             if(pathVariableList[0] == 'board'):
                 print('data processing ...')
-
+                resultData = {}
+                requestData = request.get_json()
                 if(pathVariableList[1] == 'write'):
-                    pass
+                    if (currentUserAuthority[requestData.get('board_list_id', None)]['auth_board_write'] != 1):
+                        resultData['code'] = 22
+                        resultData['description'] = 'insufficient authority'
                 if(pathVariableList[1] == 'update'):
-                    pass
+                    boardContent = boardService.board_getContent(requestData)
+                    print('boardContent : ', boardContent)
+                    contentOwner = boardContent['data'][0]['user_id']
+                    print('contentOwner : ', contentOwner)                    
+                    if ( (currentUserAuthority[requestData.get('board_list_id', None)]['auth_board_modi'] != 1) and (currentUserData['user_id'] !=  contentOwner) ):
+                        resultData['code'] = 22
+                        resultData['description'] = 'insufficient authority'                    
                 if(pathVariableList[1] == 'delete'):
-                    pass
+                    boardContent = boardService.board_getContent(requestData)
+                    print('boardContent : ', boardContent)
+                    contentOwner = boardContent['data'][0]['user_id']
+                    print('contentOwner : ', contentOwner)                    
+                    if ( (currentUserAuthority[requestData.get('board_list_id', None)]['auth_board_del'] != 1) and (currentUserData['user_id'] !=  contentOwner) ):
+                        resultData['code'] = 22
+                        resultData['description'] = 'insufficient authority'    
 
             if notAllowedFlag == 1:
                 pass
