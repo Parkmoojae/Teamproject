@@ -129,7 +129,7 @@ document.getElementById('commentAll').addEventListener('click', (e)=>{
     if(e.target.matches('button')){
         let commentId = e.target.parentNode.parentNode.firstChild.firstChild.value
         let writerId = e.target.parentNode.parentNode.firstChild.firstChild.nextSibling.value
-        alert(writerId)
+        // alert(writerId)
         let data={}
         data['nowPageNum'] = contentData['nowPageNum']
         data['boardListId'] = contentData['resultDB'][0]['board_list_id']
