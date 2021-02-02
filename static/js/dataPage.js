@@ -1,5 +1,6 @@
-
-createBoard(resultList['boardList']);
+if(resultList != ''){
+    createBoard(resultList['boardList']);
+}
 let board_list_id = get_query()['board_list_id'];
 if(board_list_id==undefined){
     board_list_id=1;

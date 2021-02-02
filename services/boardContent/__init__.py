@@ -7,6 +7,7 @@ from ainUtil import *
 
 # 게시글 data 가져오기
 @app.route('/getBoardContent/<boardId>/<boardListId>/<nowPageNum>')
+@jai_authDecorator
 def getBoardContent(boardId, boardListId, nowPageNum):
     print("getBoardContent 도착!!")
     result = {}
@@ -41,12 +42,14 @@ def getBoardContent(boardId, boardListId, nowPageNum):
     print(result['nowPageNum'])
 
     return render_template('ainBoardContent copy.html', data=result)
+    # return render_template('dd.html', data=result)
 
 @app.route('/ainBoardContent')
 def test():
     return render_template('ainBoardContent.html')
 
 # 댓글 입력
+
 @app.route('/insertComment', methods=['POST'])
 @jai_authDecorator
 def insertComment():
@@ -106,6 +109,9 @@ def delComment():
     return result
 
 
+@app.route('/render/warningAuthority')
+def warningAuthority():
+    return render_template('warningAuthority.html')
 
 
 
