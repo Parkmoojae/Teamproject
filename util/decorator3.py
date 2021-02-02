@@ -3,6 +3,7 @@ from services.auth import service as authService
 from flask import session as flaskSession
 from flask import request, redirect
 from functools import wraps
+import traceback
 
 def kys_authDecorator(func):
     @wraps(func)
@@ -70,14 +71,16 @@ def kys_authDecorator(func):
                     if (currentUserAuthority[requestData.get('board_list_id', None)]['auth_board_write'] != 1):
                         resultData['code'] = 22
                         resultData['description'] = 'insufficient authority'
+                        return resultData
                 if(pathVariableList[1] == 'update'):
                     boardContent = boardService.board_getContent(requestData)
                     print('boardContent : ', boardContent)
                     contentOwner = boardContent['data'][0]['user_id']
-                    print('contentOwner : ', contentOwner)                    
+                    print('contentOwner : ', contentOwner)                                        
                     if ( (currentUserAuthority[requestData.get('board_list_id', None)]['auth_board_modi'] != 1) and (currentUserData['user_id'] !=  contentOwner) ):
                         resultData['code'] = 22
                         resultData['description'] = 'insufficient authority'                    
+                        return resultData
                 if(pathVariableList[1] == 'delete'):
                     boardContent = boardService.board_getContent(requestData)
                     print('boardContent : ', boardContent)
@@ -86,7 +89,7 @@ def kys_authDecorator(func):
                     if ( (currentUserAuthority[requestData.get('board_list_id', None)]['auth_board_del'] != 1) and (currentUserData['user_id'] !=  contentOwner) ):
                         resultData['code'] = 22
                         resultData['description'] = 'insufficient authority'    
-
+                        return resultData
             if notAllowedFlag == 1:
                 pass
             if invalidRequestFlag == 1:
@@ -97,6 +100,7 @@ def kys_authDecorator(func):
                 return redirect('/render/insufficientAuthority')
             print('check kys_authDecorator =====  end  =====')
         except Exception as ex:
-            print('exception !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', ex)
+            # print('exception !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', ex)
+            traceback.print_exc()
         return func(*args, **kwargs)
     return wrapper
