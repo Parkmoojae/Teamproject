@@ -5,6 +5,14 @@ from flask import request, redirect
 from functools import wraps
 import traceback
 
+def authDecorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if(flaskSession.get('loginUserData') is None):
+            return redirect('/')
+        return func(*args, **kwargs)
+    return wrapper
+
 def kys_authDecorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
