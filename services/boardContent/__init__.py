@@ -36,10 +36,6 @@ def getBoardContent(boardId, boardListId, nowPageNum):
     # 시간표기 변경 - comment
     temp = commentTimeFormat(result['commentList']['data'])
     result['commentList']['data'] = temp
-    
-    # for i in range(len(result['commentList']['data'])):
-    #     commentTime = timeFormat(result['commentList']['data'][i]['comment_regdate'])
-    #     result['commentList']['data'][i]['comment_regdate'] = commentTime
             
 
     print(result['resultDB'])
@@ -95,10 +91,6 @@ def delComment():
     print(loginUser)
     # 댓글 작성자 id와 로그인 유저 비교
     result['resultDB'] = baordContentService.delComment(data)
-    # if data['userId'] == loginUser['user_id']:
-    #     result['resultDB'] = baordContentService.delComment(data)
-    # else:
-    #     result['resultDB'] = -1
 
      # comment 가져오기
     result['commentList'] = baordContentService.getComment(data)
@@ -112,7 +104,7 @@ def delComment():
 
     return result
 
-
+# 권한없는 경우의 html로 이동
 @app.route('/render/warningAuthority')
 def warningAuthority():
     return render_template('warningAuthority.html')

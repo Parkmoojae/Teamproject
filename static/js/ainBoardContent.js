@@ -2,7 +2,7 @@ console.log(contentData['nowPageNum'])
 console.log(contentData['resultDB'][0])
 
 // 변수선언
-// 변수선언-게시판 종류
+// 변수선언-게시판 헤더(종류표기)
 let cardHeader = document.getElementById('cardHeader')
 let spanTag = document.createElement("span")
 // 변수선언-게시글 제목
@@ -27,7 +27,7 @@ setContent(contentData)
 setComment(contentData)
 
 
-// 수정버튼 이벤트
+// 수정버튼 클릭 이벤트
 document.getElementById('conModiBtn').addEventListener('click', (e)=>{
     let data={}
     data['nowPageNum'] = contentData['nowPageNum']
@@ -42,7 +42,7 @@ document.getElementById('conModiBtn').addEventListener('click', (e)=>{
     
 })
 
-// 삭제버튼 이벤트
+// 삭제버튼 클릭 이벤트
 document.getElementById('conDelBtn').addEventListener('click', (e)=>{
     let data={}
     data['nowPageNum'] = contentData['nowPageNum']
@@ -54,7 +54,7 @@ document.getElementById('conDelBtn').addEventListener('click', (e)=>{
     
 })
 
-// 답글버튼 이벤트
+// 답글버튼 클릭 이벤트
 document.getElementById('conWriteBtn').addEventListener('click', (e)=>{
     let data={}
     data['nowPageNum'] = contentData['nowPageNum']
@@ -68,9 +68,9 @@ document.getElementById('conWriteBtn').addEventListener('click', (e)=>{
     location.href='/render/board/write?board_list_id=' + data['boardListId'] + '&board_pid=' + data['boardId']
 })
 
-// 댓글작성 버튼 이벤트
+// 댓글작성(입력) 버튼 클릭 이벤트
 document.getElementById('commentWriteBtn').addEventListener('click', (e)=>{
-    // 댓글 입력여부 확인
+    // 댓글 content null값 확인
     if(commentContent.value==''){
         alert('댓글을 입력해주세요')
     }
@@ -86,13 +86,13 @@ document.getElementById('commentWriteBtn').addEventListener('click', (e)=>{
         
         insertCommnet(data)
         
-        // 초기화
+        // 댓글창 초기화
         commentInit()
         // commentContent.value = ""
     }
 })
 
-// 댓글 선택한 id 기억
+// 댓글 선택한 id 기억(대댓글 작성을 위해 해당 댓글의 comment_id값 저장)
 document.getElementById('commentAll').addEventListener('click', (e)=>{
     if(e.target.matches('span')){
         clickedId = e.target.parentNode.parentNode.firstChild.nextSibling.value
@@ -107,13 +107,14 @@ document.getElementById('commentAll').addEventListener('click', (e)=>{
     }
 })
 
-// 댓글 선택한 id 옆에 x 버튼 이벤트
+// 댓글 선택한 id 옆에 x 버튼 이벤트(대댓글의 pid값 표기 삭제 이벤트)
 document.querySelector('#commentPid').addEventListener('click', (e)=>{
     if(e.target.matches('#removeClickedId')){
         // 댓글창 초기화
         commentInit()
     }
 })
+// 댓글창 초기화
 function commentInit(){
     temp = document.getElementById('commentPid').lastChild
         let newSpan = document.createElement('span')
