@@ -1,6 +1,7 @@
 from services import app
 from flask import request, jsonify, render_template, session, redirect
 from services.user import service as userService
+from mq.receiver import receivequeue
 
 
 
@@ -36,6 +37,7 @@ def userLogin():
     elif(resultService[0]['user_pw'] == data['userPw']):
         # 로그인 후 세션에 저장
         session["loginUserData"] = resultService[0]
+        receivequeue(data)
 
     else:
         # 비밀번호 불일치

@@ -76,6 +76,7 @@ document.getElementById('commentWriteBtn').addEventListener('click', (e)=>{
     }
     else{
         let data={}
+        data['contentWriter'] = contentWriter.value
         data['commentContent'] = commentContent.value
         data['nowPageNum'] = contentData['nowPageNum']
         data['boardListId'] = contentData['resultDB'][0]['board_list_id']

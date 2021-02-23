@@ -73,6 +73,9 @@ def insertComment():
     temp = commentTimeFormat(result['commentList']['data'])
     result['commentList']['data'] = temp
 
+    from mq.sender import sendqueue
+    sendqueue(data)
+
 
     print('@@@@@@@@@@@@')
     print(result)
